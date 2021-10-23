@@ -17,6 +17,7 @@
             android:id="@+id/gardenName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@{garden.name}"
             android:gravity="center"
             android:paddingVertical="20dp"
             android:textColor="@color/black"
@@ -29,6 +30,7 @@
 
         <TextView
             android:id="@+id/gardenDistance"
+            android:text="@{garden.distanceText}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
