@@ -7,12 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.communcationingarden.EventObserver
 import com.example.communcationingarden.databinding.ActivityLoginBinding
 import com.example.communcationingarden.info.MainActivity
-import com.example.communcationingarden.login.model.LoginViewModel
+import com.example.communcationingarden.select.SelectViewModel
 
 class LoginActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityLoginBinding
-	private val loginViewModel: LoginViewModel by viewModels()
+	private val selectViewModel: SelectViewModel by viewModels()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
 		initObserve()
 	}
 
-	private fun initObserve() = with(loginViewModel) {
+	private fun initObserve() = with(selectViewModel) {
 		mainScreenEvent.observe(this@LoginActivity, EventObserver {
 			startMainScreen()
 		})
