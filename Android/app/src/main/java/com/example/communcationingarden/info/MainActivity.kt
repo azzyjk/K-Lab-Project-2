@@ -1,7 +1,8 @@
-package com.example.communcationingarden
+package com.example.communcationingarden.info
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.communcationingarden.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

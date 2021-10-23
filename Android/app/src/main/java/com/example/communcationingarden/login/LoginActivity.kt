@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.communcationingarden.EventObserver
-import com.example.communcationingarden.MainActivity
 import com.example.communcationingarden.databinding.ActivityLoginBinding
+import com.example.communcationingarden.info.MainActivity
 import com.example.communcationingarden.login.model.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
