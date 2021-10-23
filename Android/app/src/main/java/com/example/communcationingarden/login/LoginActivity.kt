@@ -16,9 +16,7 @@ class LoginActivity : AppCompatActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		binding = ActivityLoginBinding.inflate(layoutInflater).apply {
-			viewModel = loginViewModel
-		}
+		binding = ActivityLoginBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 		initObserve()
 	}
