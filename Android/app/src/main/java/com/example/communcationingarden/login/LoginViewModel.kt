@@ -7,16 +7,16 @@ import com.example.communcationingarden.Event
 
 class LoginViewModel : ViewModel() {
 
-	private val _mainScreenEvent = MutableLiveData<Event<Unit>>()
-	val mainScreenEvent: LiveData<Event<Unit>> = _mainScreenEvent
 	private val _signupScreenEvent = MutableLiveData<Event<Unit>>()
 	val signupScreenEvent: LiveData<Event<Unit>> = _signupScreenEvent
-
-	fun openMainScreen() {
-		_mainScreenEvent.value = Event(Unit)
-	}
+	private val _selectScreenEvent = MutableLiveData<Event<Unit>>()
+	val selectScreenEvent: LiveData<Event<Unit>> = _selectScreenEvent
 
 	fun openSignupScreen() {
 		_signupScreenEvent.value = Event(Unit)
+	}
+
+	fun openSelectScreen() {
+		_selectScreenEvent.value = Event(Unit)
 	}
 }

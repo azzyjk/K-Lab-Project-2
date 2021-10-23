@@ -40,6 +40,9 @@ class LoginFragment : Fragment() {
 		signupScreenEvent.observe(viewLifecycleOwner, EventObserver {
 			navigationController.navigate(R.id.signupFragment)
 		})
+		selectScreenEvent.observe(viewLifecycleOwner, EventObserver {
+			navigationController.navigate(R.id.selectFragment)
+		})
 	}
 
 	override fun onDestroyView() {
