@@ -4,4 +4,6 @@
     <string name="id">ID</string>
     <string name="password">PASSWORD</string>
     <string name="sign_up">Sign Up</string>
+    <string name="name">NAME</string>
+    <string name="ok">OK</string>
 </resources>
