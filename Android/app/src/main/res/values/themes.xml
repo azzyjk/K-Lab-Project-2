@@ -20,5 +20,14 @@
         <item name="android:layout_marginHorizontal">30dp</item>
     </style>
 
+    <style name="LoginTitleCustomStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingVertical">20dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 
 </resources>
