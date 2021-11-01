@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.communcationingarden.EventObserver
 import com.example.communcationingarden.data.Position
 import com.example.communcationingarden.databinding.ActivityLoginBinding
-import com.example.communcationingarden.info.MainActivity
+import com.example.communcationingarden.info.InfoActivity
 import com.example.communcationingarden.select.SelectViewModel
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
 
 	private fun startMainScreen() {
 		val userPositionJson = Json.encodeToString(selectViewModel.userPositionLiveData)
-		val intent = Intent(this, MainActivity::class.java).apply {
+		val intent = Intent(this, InfoActivity::class.java).apply {
 			putExtra("Position", userPositionJson)
 		}
 		startActivity(intent)
