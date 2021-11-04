@@ -7,4 +7,5 @@
     <string name="name">NAME</string>
     <string name="ok">OK</string>
     <string name="select_garden">Select Garden</string>
+    <string name="info">Info</string>
 </resources>
