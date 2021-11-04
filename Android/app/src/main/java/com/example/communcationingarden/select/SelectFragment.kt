@@ -1,6 +1,7 @@
 package com.example.communcationingarden.select
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.location.LocationManager
 import android.os.Bundle
@@ -25,7 +26,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class SelectFragment : Fragment() {
-
+	
 	private var _binding: FragmentSelectBinding? = null
 	private val binding get() = _binding!!
 	private val selectViewModel: SelectViewModel by viewModels()
@@ -39,15 +40,20 @@ class SelectFragment : Fragment() {
 	private val locationPermissionRequest =
 		registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
 			when {
-				permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false),
-				permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
+				permissions.getOrDefault(
+					Manifest.permission.ACCESS_FINE_LOCATION,
+					false
+				) && permissions.getOrDefault(
+					Manifest.permission.ACCESS_COARSE_LOCATION,
+					false
+				) -> {
 					getUserCurrentLocation()
 				}
 				else -> {
 				}
 			}
 		}
-
+	
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
@@ -55,7 +61,7 @@ class SelectFragment : Fragment() {
 		_binding = FragmentSelectBinding.inflate(layoutInflater, container, false)
 		return binding.root
 	}
-
+	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		dummyAdapterItem()
@@ -63,7 +69,7 @@ class SelectFragment : Fragment() {
 		initObserver()
 		checkLocationPermission()
 	}
-
+	@SuppressLint("MissingPermission")
 	private fun getUserCurrentLocation() {
 		val userLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 		userLocation?.let { location ->
@@ -72,7 +78,7 @@ class SelectFragment : Fragment() {
 			selectViewModel.setUserPosition(Position(latitude, longitude))
 		}
 	}
-
+	
 	private fun checkLocationPermission() {
 		locationPermissionRequest.launch(
 			arrayOf(
@@ -81,7 +87,7 @@ class SelectFragment : Fragment() {
 			)
 		)
 	}
-
+	
 	private fun initObserver() = with(selectViewModel) {
 		mainScreenEvent.observe(viewLifecycleOwner, EventObserver {
 			val userPositionJson = Json.encodeToString(selectViewModel.userPositionLiveData)
@@ -89,7 +95,7 @@ class SelectFragment : Fragment() {
 			navigationController.navigate(R.id.infoActivity, bundle)
 		})
 	}
-
+	
 	private fun dummyAdapterItem() {
 		gardenListAdapter.updateGardenList(
 			listOf(
@@ -101,7 +107,7 @@ class SelectFragment : Fragment() {
 			)
 		)
 	}
-
+	
 	private fun initView() = with(binding) {
 		gardenListRecyclerView.adapter = gardenListAdapter
 		gardenListRecyclerView.addItemDecoration(
@@ -114,7 +120,7 @@ class SelectFragment : Fragment() {
 		locationManager =
 			requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
 	}
-
+	
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
