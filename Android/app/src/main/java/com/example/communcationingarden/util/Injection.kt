@@ -1,16 +1,16 @@
 package com.example.communcationingarden.util
 
 import android.content.Context
-import com.example.communcationingarden.data.source.DevLoginRepository
+import com.example.communcationingarden.data.source.LoginRepositoryImpl
 import com.example.communcationingarden.data.source.local.LoginLocalDataSource
 import com.example.communcationingarden.data.source.remote.LoginRemoteDataSource
 
 object Injection {
 
-	fun provideLoginRepository(context: Context): DevLoginRepository {
+	fun provideLoginRepository(context: Context): LoginRepositoryImpl {
 		val loginLocalDataSource = provideLoginLocalDataSource(context)
 		val loginRemoteDataSource = provideLoginRemoteDataSource()
-		return DevLoginRepository(loginLocalDataSource, loginRemoteDataSource)
+		return LoginRepositoryImpl(loginLocalDataSource, loginRemoteDataSource)
 	}
 
 	private fun provideLoginLocalDataSource(context: Context): LoginLocalDataSource {
