@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.communcationingarden.ViewModelFactory
 import com.example.communcationingarden.adapter.CommunityActivityListAdapter
 import com.example.communcationingarden.databinding.FragmentCommunityBinding
 
@@ -13,7 +14,9 @@ class CommunityFragment : Fragment() {
 	
 	private var _binding: FragmentCommunityBinding? = null
 	private val binding get() = _binding!!
-	private val communityViewModel: CommunityViewModel by viewModels()
+	private val communityViewModel: CommunityViewModel by viewModels {
+		ViewModelFactory(requireContext())
+	}
 	private val activityListAdapter = CommunityActivityListAdapter()
 	
 	override fun onCreateView(

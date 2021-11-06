@@ -1,6 +1,9 @@
 package com.example.communcationingarden.util
 
 import android.content.Context
+import com.example.communcationingarden.data.source.info.InfoRepositoryImpl
+import com.example.communcationingarden.data.source.info.local.InfoLocalDataSource
+import com.example.communcationingarden.data.source.info.remote.InfoRemoteDataSource
 import com.example.communcationingarden.data.source.login.LoginRepositoryImpl
 import com.example.communcationingarden.data.source.login.local.LoginLocalDataSource
 import com.example.communcationingarden.data.source.login.remote.LoginRemoteDataSource
@@ -20,5 +23,19 @@ object Injection {
 	
 	private fun provideLoginRemoteDataSource(): LoginRemoteDataSource {
 		return LoginRemoteDataSource(RetrofitApi.getLoginRetrofitInstance())
+	}
+	
+	fun provideInfoRepository(context: Context): InfoRepositoryImpl {
+		val infoLocalDataSource = provideInfoLocalDataSource(context)
+		val infoRemoteDataSource = provideInfoRemoteDataSource()
+		return InfoRepositoryImpl(infoLocalDataSource, infoRemoteDataSource)
+	}
+	
+	fun provideInfoLocalDataSource(context: Context): InfoLocalDataSource {
+		return InfoLocalDataSource()
+	}
+	
+	fun provideInfoRemoteDataSource(): InfoRemoteDataSource {
+		return InfoRemoteDataSource(RetrofitApi.getInfoRetrofitInstance())
 	}
 }
