@@ -6,5 +6,5 @@ import com.example.communcationingarden.data.source.remote.LoginRemoteDataSource
 class LoginRepositoryImpl(
 	private val localDataSource: LoginLocalDataSource,
 	private val remoteDataSource: LoginRemoteDataSource
-) {
+) : LoginRepository {
 }
