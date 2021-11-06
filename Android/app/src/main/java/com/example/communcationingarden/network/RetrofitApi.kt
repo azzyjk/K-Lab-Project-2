@@ -8,7 +8,7 @@ object RetrofitApi {
 	private const val kLabBaseUrl = "https://klab0.herokuapp.com"
 	private var loginRetrofitInstance: LoginRetrofitService? = null
 	
-	fun getKLabRetrofitInstance(): LoginRetrofitService {
+	fun getLoginRetrofitInstance(): LoginRetrofitService {
 		if (loginRetrofitInstance == null) {
 			loginRetrofitInstance = Retrofit.Builder()
 				.baseUrl(kLabBaseUrl)

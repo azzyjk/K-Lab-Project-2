@@ -19,6 +19,6 @@ object Injection {
 	}
 	
 	private fun provideLoginRemoteDataSource(): LoginRemoteDataSource {
-		return LoginRemoteDataSource(RetrofitApi.getKLabRetrofitInstance())
+		return LoginRemoteDataSource(RetrofitApi.getLoginRetrofitInstance())
 	}
 }
