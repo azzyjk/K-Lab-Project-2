@@ -10,4 +10,9 @@
         android:name="com.example.communcationingarden.info.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="com.example.communcationingarden.community.CommunityFragment"
+        android:label="fragment_community"
+        tools:layout="@layout/fragment_community" />
 </navigation>
