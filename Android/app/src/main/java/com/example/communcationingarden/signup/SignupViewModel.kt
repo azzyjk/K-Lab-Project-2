@@ -4,14 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.communcationingarden.Event
+import com.example.communcationingarden.data.source.LoginRepository
 
-class SignupViewModel : ViewModel() {
-
+class SignupViewModel(
+	private val loginRepository: LoginRepository
+) : ViewModel() {
+	
 	private val _loginScreenEvent = MutableLiveData<Event<Unit>>()
 	val loginScreenEvent: LiveData<Event<Unit>> = _loginScreenEvent
-
+	
 	fun openLoginScreen() {
-		println("Hello")
 		_loginScreenEvent.value = Event(Unit)
 	}
 }
