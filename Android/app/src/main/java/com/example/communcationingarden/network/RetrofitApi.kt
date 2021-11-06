@@ -6,16 +6,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitApi {
 	
 	private const val kLabBaseUrl = "https://klab0.herokuapp.com"
-	private var kLabRetrofitInstance: KLabRetrofitService? = null
+	private var loginRetrofitInstance: LoginRetrofitService? = null
 	
-	fun getKLabRetrofitInstance(): KLabRetrofitService {
-		if (kLabRetrofitInstance == null) {
-			kLabRetrofitInstance = Retrofit.Builder()
+	fun getKLabRetrofitInstance(): LoginRetrofitService {
+		if (loginRetrofitInstance == null) {
+			loginRetrofitInstance = Retrofit.Builder()
 				.baseUrl(kLabBaseUrl)
 				.addConverterFactory(GsonConverterFactory.create())
 				.build()
-				.create(KLabRetrofitService::class.java)
+				.create(LoginRetrofitService::class.java)
 		}
-		return kLabRetrofitInstance!!
+		return loginRetrofitInstance!!
 	}
 }
