@@ -6,21 +6,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.communcationingarden.data.GardenInfo
 import com.example.communcationingarden.databinding.ItemGardenListBinding
 
-class GardenListAdapter(private val onClick: () -> Unit) :
+class GardenListAdapter(private val onClick: (GardenInfo) -> Unit) :
 	RecyclerView.Adapter<GardenListAdapter.GardenViewHolder>() {
 	
 	private var gardenList: List<GardenInfo> = listOf()
 	
 	class GardenViewHolder(
 		private val binding: ItemGardenListBinding,
-		private val onClick: () -> Unit
+		private val onClick: (GardenInfo) -> Unit
 	) :
 		RecyclerView.ViewHolder(binding.root) {
 		
 		init {
 			binding.root.setOnClickListener {
 				binding.garden?.let {
-					onClick()
+					onClick(it)
 				}
 			}
 		}

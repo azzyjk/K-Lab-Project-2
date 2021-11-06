@@ -19,6 +19,7 @@ import com.example.communcationingarden.EventObserver
 import com.example.communcationingarden.R
 import com.example.communcationingarden.ViewModelFactory
 import com.example.communcationingarden.adapter.GardenListAdapter
+import com.example.communcationingarden.data.GardenInfo
 import com.example.communcationingarden.data.Position
 import com.example.communcationingarden.databinding.FragmentSelectBinding
 import kotlinx.serialization.encodeToString
@@ -33,7 +34,8 @@ class SelectFragment : Fragment() {
 	}
 	private lateinit var locationManager: LocationManager
 	private lateinit var navigationController: NavController
-	private val onClick: () -> Unit = {
+	private val onClick: (GardenInfo) -> Unit = {
+		selectViewModel.selectGarden(it)
 		selectViewModel.openMainScreen()
 	}
 	private val gardenListAdapter = GardenListAdapter(onClick)
@@ -92,8 +94,8 @@ class SelectFragment : Fragment() {
 	
 	private fun initObserver() = with(selectViewModel) {
 		mainScreenEvent.observe(viewLifecycleOwner, EventObserver {
-			val userPositionJson = Json.encodeToString(selectViewModel.userPosition)
-			val bundle = bundleOf("userPosition" to userPositionJson)
+			val selectGardenInfoJson = Json.encodeToString(selectViewModel.selectGarden)
+			val bundle = bundleOf("selectGarden" to selectGardenInfoJson)
 			navigationController.navigate(R.id.infoActivity, bundle)
 		})
 		gardenListLiveData.observe(viewLifecycleOwner) { gardenList ->

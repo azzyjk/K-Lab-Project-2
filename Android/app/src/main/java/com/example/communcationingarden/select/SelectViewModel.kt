@@ -16,18 +16,21 @@ class SelectViewModel(private val loginRepository: LoginRepository) : ViewModel(
 	val mainScreenEvent: LiveData<Event<Unit>> = _mainScreenEvent
 	private val _gardenListLiveData = MutableLiveData<List<GardenInfo>>()
 	val gardenListLiveData: LiveData<List<GardenInfo>> get() = _gardenListLiveData
-	private var _userPosition = Position()
-	val userPosition get() = _userPosition
+	private var userPosition: Position? = null
+	private var _selectGarden: GardenInfo? = null
+	val selectGarden get() = _selectGarden
 	
 	fun loadGardenList() = viewModelScope.launch {
-		println("Hello")
-		println(_userPosition)
-		loginRepository.requestGardenList(_userPosition)
-			.onSuccess {
-				_gardenListLiveData.value = it.gardenList
-			}.onFailure {
-				println(it)
-			}
+		userPosition?.let { position ->
+			loginRepository.requestGardenList(position)
+				.onSuccess {
+					_gardenListLiveData.value = it.gardenList
+				}
+		}
+	}
+	
+	fun selectGarden(gardenInfo: GardenInfo) {
+		_selectGarden = gardenInfo
 	}
 	
 	fun openMainScreen() {
@@ -35,6 +38,6 @@ class SelectViewModel(private val loginRepository: LoginRepository) : ViewModel(
 	}
 	
 	fun setUserPosition(position: Position) {
-		_userPosition = position
+		userPosition = position
 	}
 }
