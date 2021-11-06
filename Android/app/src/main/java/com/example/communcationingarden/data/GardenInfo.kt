@@ -2,7 +2,9 @@ package com.example.communcationingarden.data
 
 import com.example.communcationingarden.util.toDistanceText
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class GardenInfo(
 	@SerializedName("garden_name")
 	val name: String,
