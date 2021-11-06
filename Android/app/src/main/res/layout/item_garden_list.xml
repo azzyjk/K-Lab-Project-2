@@ -6,7 +6,7 @@
 
         <variable
             name="garden"
-            type="com.example.communcationingarden.data.Garden" />
+            type="com.example.communcationingarden.data.GardenInfo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
