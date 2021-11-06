@@ -99,7 +99,6 @@ class SelectFragment : Fragment() {
 			navigationController.navigate(R.id.infoActivity, bundle)
 		})
 		gardenListLiveData.observe(viewLifecycleOwner) { gardenList ->
-			println(gardenList)
 			gardenListAdapter.updateGardenList(gardenList)
 		}
 	}
