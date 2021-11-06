@@ -20,6 +20,11 @@ class InfoActivity : AppCompatActivity() {
 		setContentView(binding.root)
 		setSupportActionBar(binding.toolBar)
 		initView()
+		sendSelectGardenInfo()
+	}
+	
+	private fun sendSelectGardenInfo() {
+		navigationController.navigate(R.id.infoFragment, intent.extras)
 	}
 	
 	private fun initView() {
