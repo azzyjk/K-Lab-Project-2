@@ -1,8 +1,10 @@
 package com.example.communcationingarden.data.source.remote
 
+import com.example.communcationingarden.data.Position
 import com.example.communcationingarden.data.SignInInfo
 import com.example.communcationingarden.data.SignUpInfo
 import com.example.communcationingarden.data.source.LoginDataSource
+import com.example.communcationingarden.network.GardenListResponse
 import com.example.communcationingarden.network.KLabRetrofitService
 import com.example.communcationingarden.network.SignInResponse
 import com.example.communcationingarden.network.SignUpResponse
@@ -32,6 +34,20 @@ class LoginRemoteDataSource(private val kLabRetrofitService: KLabRetrofitService
 					put("pw", signInInfo.password)
 				}
 				kLabRetrofitService.requestSignIn(body)
+			}
+		}
+	
+	override suspend fun requestGardenList(userPosition: Position): Result<GardenListResponse> =
+		withContext(Dispatchers.IO) {
+			kotlin.runCatching {
+				val body = HashMap<String, String>().apply {
+					put("latitude", userPosition.latitude.toString())
+					put("longitude", userPosition.longitude.toString())
+				}
+				kLabRetrofitService.requestGardenList(body).also {
+					println("Hello")
+					println(it)
+				}
 			}
 		}
 }
