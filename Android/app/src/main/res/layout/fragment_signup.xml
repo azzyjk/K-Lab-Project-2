@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:onClick="@{() -> viewModel.signUpRequest()}"
+            android:onClick="@{() -> viewModel.requestSignUp()}"
             android:text="@string/ok"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profileImageView" />

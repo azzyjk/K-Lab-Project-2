@@ -23,7 +23,7 @@ class SignUpViewModel(
 	val passwordLiveData = MutableLiveData<String>()
 	val nameLiveData = MutableLiveData<String>()
 	
-	fun signUpRequest() = viewModelScope.launch {
+	fun requestSignUp() = viewModelScope.launch {
 		loginRepository.requestSignUp(
 			SignUpInfo(
 				idLiveData.value!!,
