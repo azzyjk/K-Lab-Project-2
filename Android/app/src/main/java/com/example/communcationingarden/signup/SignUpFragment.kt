@@ -18,7 +18,7 @@ class SignUpFragment : Fragment() {
 	
 	private var _binding: FragmentSignupBinding? = null
 	private val binding get() = _binding!!
-	private val signupViewModel: SignUpViewModel by viewModels {
+	private val signUpViewModel: SignUpViewModel by viewModels {
 		ViewModelFactory(requireContext())
 	}
 	private lateinit var navigationController: NavController
@@ -28,18 +28,18 @@ class SignUpFragment : Fragment() {
 		savedInstanceState: Bundle?
 	): View {
 		_binding = FragmentSignupBinding.inflate(layoutInflater, container, false).apply {
-			viewModel = signupViewModel
+			viewModel = signUpViewModel
 		}
 		return binding.root
 	}
-
+	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		navigationController = findNavController()
 		initObserve()
 	}
-
-	private fun initObserve() = with(signupViewModel) {
+	
+	private fun initObserve() = with(signUpViewModel) {
 		loginScreenEvent.observe(viewLifecycleOwner, EventObserver {
 			navigationController.navigate(R.id.loginFragment)
 		})
