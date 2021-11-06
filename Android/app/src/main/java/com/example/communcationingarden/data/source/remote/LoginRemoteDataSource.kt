@@ -44,10 +44,7 @@ class LoginRemoteDataSource(private val kLabRetrofitService: KLabRetrofitService
 					put("latitude", userPosition.latitude.toString())
 					put("longitude", userPosition.longitude.toString())
 				}
-				kLabRetrofitService.requestGardenList(body).also {
-					println("Hello")
-					println(it)
-				}
+				kLabRetrofitService.requestGardenList(body)
 			}
 		}
 }
