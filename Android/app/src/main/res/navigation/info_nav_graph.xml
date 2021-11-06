@@ -20,4 +20,9 @@
         android:name="com.example.communcationingarden.my.MyFragment"
         android:label="fragment_my"
         tools:layout="@layout/fragment_my" />
+    <fragment
+        android:id="@+id/snsFragment"
+        android:name="com.example.communcationingarden.sns.SnsFragment"
+        android:label="fragment_sns"
+        tools:layout="@layout/fragment_sns" />
 </navigation>
