@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.communcationingarden.EventObserver
 import com.example.communcationingarden.R
+import com.example.communcationingarden.ViewModelFactory
 import com.example.communcationingarden.adapter.GardenListAdapter
-import com.example.communcationingarden.data.Garden
 import com.example.communcationingarden.data.Position
 import com.example.communcationingarden.databinding.FragmentSelectBinding
 import kotlinx.serialization.encodeToString
@@ -28,13 +28,16 @@ class SelectFragment : Fragment() {
 	
 	private var _binding: FragmentSelectBinding? = null
 	private val binding get() = _binding!!
-	private val selectViewModel: SelectViewModel by viewModels()
+	private val selectViewModel: SelectViewModel by viewModels {
+		ViewModelFactory(requireContext())
+	}
 	private lateinit var locationManager: LocationManager
 	private lateinit var navigationController: NavController
 	private val onClick: () -> Unit = {
 		selectViewModel.openMainScreen()
 	}
 	private val gardenListAdapter = GardenListAdapter(onClick)
+	
 	// TODO:해당 부분 수정
 	private val locationPermissionRequest =
 		registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -62,10 +65,10 @@ class SelectFragment : Fragment() {
 	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		dummyAdapterItem()
 		initView()
 		initObserver()
 		getUserCurrentLocation()
+		selectViewModel.loadGardenList()
 	}
 	
 	private fun getUserCurrentLocation() {
@@ -89,22 +92,14 @@ class SelectFragment : Fragment() {
 	
 	private fun initObserver() = with(selectViewModel) {
 		mainScreenEvent.observe(viewLifecycleOwner, EventObserver {
-			val userPositionJson = Json.encodeToString(selectViewModel.userPositionLiveData)
+			val userPositionJson = Json.encodeToString(selectViewModel.userPosition)
 			val bundle = bundleOf("userPosition" to userPositionJson)
 			navigationController.navigate(R.id.infoActivity, bundle)
 		})
-	}
-	
-	private fun dummyAdapterItem() {
-		gardenListAdapter.updateGardenList(
-			listOf(
-				Garden("TEST1", 2.2),
-				Garden("TEST2", 2.2),
-				Garden("TEST3", 2.2),
-				Garden("TEST4", 2.2),
-				Garden("TEST5", 2.2)
-			)
-		)
+		gardenListLiveData.observe(viewLifecycleOwner) { gardenList ->
+			println(gardenList)
+			gardenListAdapter.updateGardenList(gardenList)
+		}
 	}
 	
 	private fun initView() = with(binding) {

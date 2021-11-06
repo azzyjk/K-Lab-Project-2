@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.communcationingarden.login.model.LoginViewModel
+import com.example.communcationingarden.select.SelectViewModel
 import com.example.communcationingarden.signup.SignUpViewModel
 import com.example.communcationingarden.util.Injection
 
@@ -15,6 +16,9 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
 		}
 		modelClass.isAssignableFrom(SignUpViewModel::class.java) -> {
 			SignUpViewModel(Injection.provideLoginRepository(context))
+		}
+		modelClass.isAssignableFrom(SelectViewModel::class.java) -> {
+			SelectViewModel(Injection.provideLoginRepository(context))
 		}
 		else -> {
 			throw IllegalArgumentException("Not Defined ViewModel")
