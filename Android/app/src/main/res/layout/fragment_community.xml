@@ -13,5 +13,5 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_community_activity" />
+        tools:listitem="@layout/item_community_activity_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>

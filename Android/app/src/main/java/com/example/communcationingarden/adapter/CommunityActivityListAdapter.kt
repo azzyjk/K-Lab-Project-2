@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.communcationingarden.data.ActivityInfo
-import com.example.communcationingarden.databinding.ItemCommunityActivityBinding
+import com.example.communcationingarden.databinding.ItemCommunityActivityListBinding
 
 class CommunityActivityListAdapter :
 	RecyclerView.Adapter<CommunityActivityListAdapter.CommunityActivityViewHolder>() {
 	
 	private var activityList = listOf<ActivityInfo>()
 	
-	class CommunityActivityViewHolder(val binding: ItemCommunityActivityBinding) :
+	class CommunityActivityViewHolder(val binding: ItemCommunityActivityListBinding) :
 		RecyclerView.ViewHolder(binding.root) {
 		
 		fun setup(activity: ActivityInfo) {
@@ -21,7 +21,11 @@ class CommunityActivityListAdapter :
 	
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommunityActivityViewHolder {
 		val binding =
-			ItemCommunityActivityBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+			ItemCommunityActivityListBinding.inflate(
+				LayoutInflater.from(parent.context),
+				parent,
+				false
+			)
 		return CommunityActivityViewHolder(binding)
 	}
 	
