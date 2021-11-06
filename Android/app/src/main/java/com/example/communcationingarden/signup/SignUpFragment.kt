@@ -29,6 +29,7 @@ class SignUpFragment : Fragment() {
 	): View {
 		_binding = FragmentSignupBinding.inflate(layoutInflater, container, false).apply {
 			viewModel = signUpViewModel
+			lifecycleOwner = viewLifecycleOwner
 		}
 		return binding.root
 	}
