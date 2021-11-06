@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.example.communcationingarden.adapter.SnsListAdapter
 import com.example.communcationingarden.databinding.FragmentSnsBinding
+import com.example.communcationingarden.info.InfoViewModel
 
 class SnsFragment : Fragment() {
 	
 	private var _binding: FragmentSnsBinding? = null
 	private val binding get() = _binding!!
-	private val snsViewModel: SnsViewModel by viewModels()
+	private val infoViewModel: InfoViewModel by activityViewModels()
 	private val snsListAdapter = SnsListAdapter()
 	
 	override fun onCreateView(
@@ -28,14 +29,14 @@ class SnsFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 		initView()
 		initObserve()
-		snsViewModel.loadSnsList()
+		infoViewModel.loadSnsList()
 	}
 	
 	private fun initView() = with(binding) {
 		snsRecyclerView.adapter = snsListAdapter
 	}
 	
-	private fun initObserve() = with(snsViewModel) {
+	private fun initObserve() = with(infoViewModel) {
 		snsInfoListLiveData.observe(viewLifecycleOwner) { snsList ->
 			snsListAdapter.updateSnsInfoList(snsList)
 		}

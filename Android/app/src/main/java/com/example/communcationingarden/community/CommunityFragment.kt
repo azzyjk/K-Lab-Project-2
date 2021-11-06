@@ -5,18 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import com.example.communcationingarden.ViewModelFactory
+import androidx.fragment.app.activityViewModels
 import com.example.communcationingarden.adapter.CommunityActivityListAdapter
 import com.example.communcationingarden.databinding.FragmentCommunityBinding
+import com.example.communcationingarden.info.InfoViewModel
 
 class CommunityFragment : Fragment() {
 	
 	private var _binding: FragmentCommunityBinding? = null
 	private val binding get() = _binding!!
-	private val communityViewModel: CommunityViewModel by viewModels {
-		ViewModelFactory(requireContext())
-	}
+	private val infoViewModel: InfoViewModel by activityViewModels()
 	private val activityListAdapter = CommunityActivityListAdapter()
 	
 	override fun onCreateView(
@@ -31,14 +29,14 @@ class CommunityFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 		initView()
 		initObserve()
-		communityViewModel.loadActivityList()
+		infoViewModel.loadActivityList()
 	}
 	
 	private fun initView() = with(binding) {
 		communityActivityRecyclerView.adapter = activityListAdapter
 	}
 	
-	private fun initObserve() = with(communityViewModel) {
+	private fun initObserve() = with(infoViewModel) {
 		activityListLiveData.observe(viewLifecycleOwner) { activityList ->
 			activityListAdapter.updateActivityList(activityList)
 		}

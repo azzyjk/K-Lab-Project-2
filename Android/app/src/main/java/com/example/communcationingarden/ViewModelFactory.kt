@@ -3,7 +3,7 @@ package com.example.communcationingarden
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.communcationingarden.community.CommunityViewModel
+import com.example.communcationingarden.info.InfoViewModel
 import com.example.communcationingarden.login.model.LoginViewModel
 import com.example.communcationingarden.select.SelectViewModel
 import com.example.communcationingarden.signup.SignUpViewModel
@@ -21,8 +21,8 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
 		modelClass.isAssignableFrom(SelectViewModel::class.java) -> {
 			SelectViewModel(Injection.provideLoginRepository(context))
 		}
-		modelClass.isAssignableFrom(CommunityViewModel::class.java) -> {
-			CommunityViewModel(Injection.provideInfoRepository(context))
+		modelClass.isAssignableFrom(InfoViewModel::class.java) -> {
+			InfoViewModel(Injection.provideInfoRepository(context))
 		}
 		else -> {
 			throw IllegalArgumentException("Not Defined ViewModel")

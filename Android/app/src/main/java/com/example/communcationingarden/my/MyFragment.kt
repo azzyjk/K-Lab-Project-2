@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.example.communcationingarden.adapter.MyActivityListAdapter
 import com.example.communcationingarden.databinding.FragmentMyBinding
+import com.example.communcationingarden.info.InfoViewModel
 
 class MyFragment : Fragment() {
 	
 	private var _binding: FragmentMyBinding? = null
 	private val binding get() = _binding!!
-	private val myViewModel: MyViewModel by viewModels()
+	private val infoViewModel: InfoViewModel by activityViewModels()
 	private val myActivityListAdapter = MyActivityListAdapter()
 	
 	override fun onCreateView(
@@ -28,14 +29,14 @@ class MyFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 		initView()
 		initObserve()
-		myViewModel.loadMyActivity()
+		infoViewModel.loadMyActivity()
 	}
 	
 	private fun initView() = with(binding) {
 		myActivityRecyclerView.adapter = myActivityListAdapter
 	}
 	
-	private fun initObserve() = with(myViewModel) {
+	private fun initObserve() = with(infoViewModel) {
 		myActivityListLiveData.observe(viewLifecycleOwner) { myActivityList ->
 			myActivityListAdapter.updateActivityList(myActivityList)
 		}
