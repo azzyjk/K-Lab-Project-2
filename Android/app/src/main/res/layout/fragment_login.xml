@@ -40,7 +40,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/idEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.idLiveData}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -54,7 +55,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.passwordLiveData}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -63,19 +65,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:onClick="@{() -> viewModel.requestSignIn()}"
             android:text="@string/sign_in"
-            android:onClick="@{() -> viewModel.openSelectScreen()}"
             android:textAllCaps="false"
             app:layout_constraintRight_toRightOf="@id/passwordInputLayout"
             app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
 
         <com.google.android.material.button.MaterialButton
-            android:onClick="@{() -> viewModel.openSignupScreen()}"
             android:id="@+id/signupButton"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:onClick="@{() -> viewModel.openSignupScreen()}"
             android:text="@string/sign_up"
             app:layout_constraintLeft_toLeftOf="@id/passwordInputLayout"
             app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
