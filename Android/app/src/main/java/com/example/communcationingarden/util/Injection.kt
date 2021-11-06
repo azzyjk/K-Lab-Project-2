@@ -1,9 +1,9 @@
 package com.example.communcationingarden.util
 
 import android.content.Context
-import com.example.communcationingarden.data.source.LoginRepositoryImpl
-import com.example.communcationingarden.data.source.local.LoginLocalDataSource
-import com.example.communcationingarden.data.source.remote.LoginRemoteDataSource
+import com.example.communcationingarden.data.source.login.LoginRepositoryImpl
+import com.example.communcationingarden.data.source.login.local.LoginLocalDataSource
+import com.example.communcationingarden.data.source.login.remote.LoginRemoteDataSource
 import com.example.communcationingarden.network.RetrofitApi
 
 object Injection {

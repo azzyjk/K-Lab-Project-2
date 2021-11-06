@@ -1,10 +1,10 @@
-package com.example.communcationingarden.data.source
+package com.example.communcationingarden.data.source.login
 
 import com.example.communcationingarden.data.Position
 import com.example.communcationingarden.data.SignInInfo
 import com.example.communcationingarden.data.SignUpInfo
-import com.example.communcationingarden.data.source.local.LoginLocalDataSource
-import com.example.communcationingarden.data.source.remote.LoginRemoteDataSource
+import com.example.communcationingarden.data.source.login.local.LoginLocalDataSource
+import com.example.communcationingarden.data.source.login.remote.LoginRemoteDataSource
 import com.example.communcationingarden.network.GardenListResponse
 import com.example.communcationingarden.network.SignInResponse
 import com.example.communcationingarden.network.SignUpResponse

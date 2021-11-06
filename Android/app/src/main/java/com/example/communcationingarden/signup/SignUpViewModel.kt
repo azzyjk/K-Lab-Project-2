@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.communcationingarden.Event
 import com.example.communcationingarden.data.SignUpInfo
-import com.example.communcationingarden.data.source.LoginRepository
+import com.example.communcationingarden.data.source.login.LoginRepository
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(

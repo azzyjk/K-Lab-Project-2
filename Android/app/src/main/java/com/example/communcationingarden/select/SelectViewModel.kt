@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.communcationingarden.Event
 import com.example.communcationingarden.data.GardenInfo
 import com.example.communcationingarden.data.Position
-import com.example.communcationingarden.data.source.LoginRepository
+import com.example.communcationingarden.data.source.login.LoginRepository
 import kotlinx.coroutines.launch
 
 class SelectViewModel(private val loginRepository: LoginRepository) : ViewModel() {

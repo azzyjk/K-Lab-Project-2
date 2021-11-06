@@ -1,4 +1,4 @@
-package com.example.communcationingarden.data.source
+package com.example.communcationingarden.data.source.login
 
 import com.example.communcationingarden.data.Position
 import com.example.communcationingarden.data.SignInInfo

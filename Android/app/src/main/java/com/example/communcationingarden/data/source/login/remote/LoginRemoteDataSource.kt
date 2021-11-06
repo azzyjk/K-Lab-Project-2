@@ -1,9 +1,9 @@
-package com.example.communcationingarden.data.source.remote
+package com.example.communcationingarden.data.source.login.remote
 
 import com.example.communcationingarden.data.Position
 import com.example.communcationingarden.data.SignInInfo
 import com.example.communcationingarden.data.SignUpInfo
-import com.example.communcationingarden.data.source.LoginDataSource
+import com.example.communcationingarden.data.source.login.LoginDataSource
 import com.example.communcationingarden.network.GardenListResponse
 import com.example.communcationingarden.network.LoginRetrofitService
 import com.example.communcationingarden.network.SignInResponse
