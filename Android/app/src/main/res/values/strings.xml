@@ -12,4 +12,6 @@
     <string name="community">Community</string>
     <string name="short_test_text">Lorem ipsum</string>
     <string name="join">Join</string>
+    <string name="cancel">Cancel</string>
+    <string name="my">My</string>
 </resources>

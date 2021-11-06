@@ -12,4 +12,10 @@
         android:enabled="true"
         android:icon="@drawable/ic_outline_people_24"
         android:title="@string/community" />
+
+    <item
+        android:id="@+id/myFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_person_24"
+        android:title="@string/my" />
 </menu>
