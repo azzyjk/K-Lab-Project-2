@@ -14,11 +14,11 @@ import com.example.communcationingarden.R
 import com.example.communcationingarden.ViewModelFactory
 import com.example.communcationingarden.databinding.FragmentSignupBinding
 
-class SignupFragment : Fragment() {
+class SignUpFragment : Fragment() {
 	
 	private var _binding: FragmentSignupBinding? = null
 	private val binding get() = _binding!!
-	private val signupViewModel: SignupViewModel by viewModels {
+	private val signupViewModel: SignUpViewModel by viewModels {
 		ViewModelFactory(requireContext())
 	}
 	private lateinit var navigationController: NavController

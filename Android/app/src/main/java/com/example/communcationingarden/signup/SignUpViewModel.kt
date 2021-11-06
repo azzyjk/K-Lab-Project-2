@@ -9,7 +9,7 @@ import com.example.communcationingarden.data.SignUpInfo
 import com.example.communcationingarden.data.source.LoginRepository
 import kotlinx.coroutines.launch
 
-class SignupViewModel(
+class SignUpViewModel(
 	private val loginRepository: LoginRepository
 ) : ViewModel() {
 	
