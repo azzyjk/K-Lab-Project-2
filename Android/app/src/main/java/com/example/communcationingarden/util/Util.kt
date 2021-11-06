@@ -1,5 +1,5 @@
 package com.example.communcationingarden.util
 
-fun Double.toDistanceText(): String {
-	return "${this}Km"
+fun Int.toDistanceText(): String {
+	return "${(this.toDouble() / 1000)}km"
 }
