@@ -7,4 +7,7 @@ interface InfoRetrofitService {
 	
 	@POST("/activity_all")
 	suspend fun getAllActivityList(@Body body: HashMap<String, String>): ActivityResponse
+	
+	@POST("/participate_activity")
+	suspend fun requestParticipate(@Body body: HashMap<String, String>): ParticipateResponse
 }
