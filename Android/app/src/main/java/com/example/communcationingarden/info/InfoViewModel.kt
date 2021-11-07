@@ -39,8 +39,11 @@ class InfoViewModel(private val infoRepository: InfoRepository) : ViewModel() {
 		}
 	}
 	
-	fun loadMyActivity() {
-		TODO("Not yet implemented")
+	fun loadMyActivity() = viewModelScope.launch {
+		infoRepository.getUserActivityList(userId!!, _selectGardenLiveData.value!!.name)
+			.onSuccess { response ->
+				_myActivityListLiveData.value = response.activityList
+			}
 	}
 	
 	fun loadSnsList() {
