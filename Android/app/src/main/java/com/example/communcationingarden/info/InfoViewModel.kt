@@ -47,13 +47,19 @@ class InfoViewModel(private val infoRepository: InfoRepository) : ViewModel() {
 	}
 	
 	fun loadSnsList() {
-		TODO("Not yet implemented")
 	}
 	
 	fun requestParticipate(activityInfo: ActivityInfo) = viewModelScope.launch {
 		infoRepository.requestParticipate(userId!!, activityInfo)
 			.onSuccess {
 				loadActivityList()
+			}
+	}
+	
+	fun requestExitActivity(activityInfo: ActivityInfo) = viewModelScope.launch {
+		infoRepository.requestExitActivity(userId!!, activityInfo)
+			.onSuccess {
+				loadMyActivity()
 			}
 	}
 }

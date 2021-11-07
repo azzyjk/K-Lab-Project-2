@@ -5,24 +5,32 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.communcationingarden.data.ActivityInfo
 import com.example.communcationingarden.databinding.ItemMyActivityListBinding
+import com.example.communcationingarden.info.InfoViewModel
 
-class MyActivityListAdapter :
+class MyActivityListAdapter(
+	private val infoViewModel: InfoViewModel
+) :
 	RecyclerView.Adapter<MyActivityListAdapter.CommunityActivityViewHolder>() {
 	
 	private var activityList = listOf<ActivityInfo>()
 	
-	class CommunityActivityViewHolder(val binding: ItemMyActivityListBinding) :
+	class CommunityActivityViewHolder(
+		private val binding: ItemMyActivityListBinding,
+		private val infoViewModel: InfoViewModel
+	) :
 		RecyclerView.ViewHolder(binding.root) {
 		
 		fun setup(activity: ActivityInfo) {
 			binding.activity = activity
+			binding.viewModel = infoViewModel
+			binding.executePendingBindings()
 		}
 	}
 	
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommunityActivityViewHolder {
 		val binding =
 			ItemMyActivityListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-		return CommunityActivityViewHolder(binding)
+		return CommunityActivityViewHolder(binding, infoViewModel)
 	}
 	
 	override fun onBindViewHolder(holder: CommunityActivityViewHolder, position: Int) {

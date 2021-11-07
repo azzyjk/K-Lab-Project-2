@@ -15,7 +15,7 @@ class MyFragment : Fragment() {
 	private var _binding: FragmentMyBinding? = null
 	private val binding get() = _binding!!
 	private val infoViewModel: InfoViewModel by activityViewModels()
-	private val myActivityListAdapter = MyActivityListAdapter()
+	private lateinit var myActivityListAdapter: MyActivityListAdapter
 	
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +33,7 @@ class MyFragment : Fragment() {
 	}
 	
 	private fun initView() = with(binding) {
+		myActivityListAdapter = MyActivityListAdapter(infoViewModel)
 		myActivityRecyclerView.adapter = myActivityListAdapter
 	}
 	
