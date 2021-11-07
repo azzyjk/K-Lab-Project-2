@@ -15,7 +15,7 @@ class CommunityFragment : Fragment() {
 	private var _binding: FragmentCommunityBinding? = null
 	private val binding get() = _binding!!
 	private val infoViewModel: InfoViewModel by activityViewModels()
-	private val activityListAdapter = CommunityActivityListAdapter()
+	private lateinit var activityListAdapter: CommunityActivityListAdapter
 	
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +33,7 @@ class CommunityFragment : Fragment() {
 	}
 	
 	private fun initView() = with(binding) {
+		activityListAdapter = CommunityActivityListAdapter(infoViewModel)
 		communityActivityRecyclerView.adapter = activityListAdapter
 	}
 	

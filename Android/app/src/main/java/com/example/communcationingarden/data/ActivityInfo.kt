@@ -15,4 +15,7 @@ data class ActivityInfo(
 	val maxParticipantsNumber: Int,
 	@SerializedName("cur")
 	val currentParticipantsNumber: Int
-)
+) {
+	
+	val participantCountText get() = "$currentParticipantsNumber / $maxParticipantsNumber"
+}

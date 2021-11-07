@@ -6,6 +6,10 @@
         <variable
             name="activity"
             type="com.example.communcationingarden.data.ActivityInfo" />
+
+        <variable
+            name="viewModel"
+            type="com.example.communcationingarden.info.InfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -46,14 +50,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/join"
+            android:onClick="@{() -> viewModel.requestParticipate(activity)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/participantTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Participant: "
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/participantCountTextView"
+            app:layout_constraintTop_toBottomOf="@id/dateTextView" />
+
+        <TextView
+            android:id="@+id/participantCountTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@{activity.participantCountText}"
+            app:layout_constraintLeft_toRightOf="@id/participantTextView"
             app:layout_constraintRight_toLeftOf="@id/joinButton"
             app:layout_constraintTop_toBottomOf="@id/dateTextView"
             tools:text="1/4" />

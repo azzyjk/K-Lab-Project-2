@@ -5,17 +5,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.communcationingarden.data.ActivityInfo
 import com.example.communcationingarden.databinding.ItemCommunityActivityListBinding
+import com.example.communcationingarden.info.InfoViewModel
 
-class CommunityActivityListAdapter :
-	RecyclerView.Adapter<CommunityActivityListAdapter.CommunityActivityViewHolder>() {
+class CommunityActivityListAdapter(
+	private val infoViewModel: InfoViewModel
+) : RecyclerView.Adapter<CommunityActivityListAdapter.CommunityActivityViewHolder>() {
 	
 	private var activityList = listOf<ActivityInfo>()
 	
-	class CommunityActivityViewHolder(val binding: ItemCommunityActivityListBinding) :
+	class CommunityActivityViewHolder(
+		private val binding: ItemCommunityActivityListBinding,
+		private val infoViewModel: InfoViewModel
+	) :
 		RecyclerView.ViewHolder(binding.root) {
 		
 		fun setup(activity: ActivityInfo) {
 			binding.activity = activity
+			binding.viewModel = infoViewModel
+			binding.executePendingBindings()
 		}
 	}
 	
@@ -26,7 +33,7 @@ class CommunityActivityListAdapter :
 				parent,
 				false
 			)
-		return CommunityActivityViewHolder(binding)
+		return CommunityActivityViewHolder(binding, infoViewModel)
 	}
 	
 	override fun onBindViewHolder(holder: CommunityActivityViewHolder, position: Int) {
