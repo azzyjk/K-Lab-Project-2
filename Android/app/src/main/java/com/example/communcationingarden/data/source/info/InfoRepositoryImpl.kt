@@ -21,4 +21,11 @@ class InfoRepositoryImpl(
 	): Result<ParticipateResponse> {
 		return remoteDataSource.requestParticipateActivity(userId, activityInfo)
 	}
+	
+	override suspend fun getUserActivityList(
+		userId: String,
+		gardenName: String
+	): Result<ActivityResponse> {
+		return remoteDataSource.getUserActivityList(userId, gardenName)
+	}
 }

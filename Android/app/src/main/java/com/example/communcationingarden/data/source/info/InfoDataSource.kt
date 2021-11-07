@@ -16,5 +16,10 @@ interface InfoDataSource {
 			userId: String,
 			activityInfo: ActivityInfo
 		): Result<ParticipateResponse>
+		
+		suspend fun getUserActivityList(
+			userId: String,
+			gardenName: String
+		): Result<ActivityResponse>
 	}
 }

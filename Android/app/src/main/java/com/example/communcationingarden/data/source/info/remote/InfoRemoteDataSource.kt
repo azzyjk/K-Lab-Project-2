@@ -34,4 +34,18 @@ class InfoRemoteDataSource(private val infoRetrofitService: InfoRetrofitService)
 				infoRetrofitService.requestParticipateActivity(body)
 			}
 		}
+	
+	override suspend fun getUserActivityList(
+		userId: String,
+		gardenName: String
+	): Result<ActivityResponse> =
+		withContext(Dispatchers.IO) {
+			kotlin.runCatching {
+				val body = HashMap<String, String>().apply {
+					put("garden", gardenName)
+					put("id", userId)
+				}
+				infoRetrofitService.requestUserActivityList(body)
+			}
+		}
 }
