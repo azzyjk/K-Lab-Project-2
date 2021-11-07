@@ -19,6 +19,6 @@ class InfoRepositoryImpl(
 		userId: String,
 		activityInfo: ActivityInfo
 	): Result<ParticipateResponse> {
-		return remoteDataSource.requestParticipate(userId, activityInfo)
+		return remoteDataSource.requestParticipateActivity(userId, activityInfo)
 	}
 }

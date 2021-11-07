@@ -21,7 +21,7 @@ class InfoRemoteDataSource(private val infoRetrofitService: InfoRetrofitService)
 			}
 		}
 	
-	override suspend fun requestParticipate(
+	override suspend fun requestParticipateActivity(
 		userId: String,
 		activityInfo: ActivityInfo
 	): Result<ParticipateResponse> =

@@ -12,7 +12,7 @@ interface InfoDataSource {
 		
 		suspend fun getAllActivityList(gardenName: String): Result<ActivityResponse>
 		
-		suspend fun requestParticipate(
+		suspend fun requestParticipateActivity(
 			userId: String,
 			activityInfo: ActivityInfo
 		): Result<ParticipateResponse>
