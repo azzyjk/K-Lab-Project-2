@@ -24,6 +24,7 @@ class SelectViewModel(private val loginRepository: LoginRepository) : ViewModel(
 		userPosition?.let { position ->
 			loginRepository.requestGardenList(position)
 				.onSuccess {
+					println(it)
 					_gardenListLiveData.value = it.gardenList
 				}
 		}

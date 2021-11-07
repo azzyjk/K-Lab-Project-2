@@ -1,6 +1,7 @@
 package com.example.communcationingarden.select
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.location.LocationManager
 import android.os.Bundle
@@ -51,6 +52,7 @@ class SelectFragment : Fragment() {
 					Manifest.permission.ACCESS_COARSE_LOCATION,
 					false
 				) -> {
+					getUserCurrentLocation()
 				}
 				else -> {
 				}
@@ -69,17 +71,17 @@ class SelectFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 		initView()
 		initObserver()
-		getUserCurrentLocation()
-		selectViewModel.loadGardenList()
+		checkLocationPermission()
 	}
 	
+	@SuppressLint("MissingPermission")
 	private fun getUserCurrentLocation() {
-		checkLocationPermission()
 		val userLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 		userLocation?.let { location ->
 			val latitude = location.latitude
 			val longitude = location.longitude
 			selectViewModel.setUserPosition(Position(latitude, longitude))
+			selectViewModel.loadGardenList()
 		}
 	}
 	
