@@ -31,7 +31,7 @@ class InfoRemoteDataSource(private val infoRetrofitService: InfoRetrofitService)
 					put("activity_no", activityInfo.no.toString())
 					put("id", userId)
 				}
-				infoRetrofitService.requestParticipate(body)
+				infoRetrofitService.requestParticipateActivity(body)
 			}
 		}
 }
