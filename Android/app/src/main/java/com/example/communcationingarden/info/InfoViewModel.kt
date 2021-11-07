@@ -20,9 +20,14 @@ class InfoViewModel(private val infoRepository: InfoRepository) : ViewModel() {
 	val myActivityListLiveData get() = _myActivityListLiveData
 	private val _snsInfoListLiveData = MutableLiveData<List<SnsInfo>>()
 	val snsInfoListLiveData get() = _snsInfoListLiveData
+	private var userId: String? = null
 	
 	fun setSelectGarden(selectGardenInfo: GardenInfo) {
 		_selectGardenLiveData.value = selectGardenInfo
+	}
+	
+	fun setUserId(userId: String) {
+		this.userId = userId
 	}
 	
 	fun loadActivityList() = viewModelScope.launch {

@@ -28,14 +28,16 @@ class InfoActivity : AppCompatActivity() {
 		setContentView(binding.root)
 		setSupportActionBar(binding.toolBar)
 		initView()
-		setSelectGarden()
+		setUserInfo()
 	}
 	
-	private fun setSelectGarden() {
+	private fun setUserInfo() {
 		intent.extras?.let { bundle ->
+			val userId = bundle.getString("userId")!!
 			val selectGardenJson = bundle.getString("selectGarden")!!
 			val selectGarden = Json.decodeFromString<GardenInfo>(selectGardenJson)
 			infoViewModel.setSelectGarden(selectGarden)
+			infoViewModel.setUserId(userId)
 		}
 	}
 	

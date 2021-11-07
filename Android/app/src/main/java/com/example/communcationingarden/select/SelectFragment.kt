@@ -94,8 +94,12 @@ class SelectFragment : Fragment() {
 	
 	private fun initObserver() = with(selectViewModel) {
 		mainScreenEvent.observe(viewLifecycleOwner, EventObserver {
+			val userId = requireArguments().getString("userId")
 			val selectGardenInfoJson = Json.encodeToString(selectViewModel.selectGarden)
-			val bundle = bundleOf("selectGarden" to selectGardenInfoJson)
+			val bundle = bundleOf(
+				"selectGarden" to selectGardenInfoJson,
+				"userId" to userId
+			)
 			navigationController.navigate(R.id.infoActivity, bundle)
 		})
 		gardenListLiveData.observe(viewLifecycleOwner) { gardenList ->
