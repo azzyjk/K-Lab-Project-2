@@ -2,6 +2,7 @@ package com.example.communcationingarden.data.source.info
 
 import com.example.communcationingarden.data.ActivityInfo
 import com.example.communcationingarden.network.ActivityResponse
+import com.example.communcationingarden.network.ExitResponse
 import com.example.communcationingarden.network.ParticipateResponse
 
 interface InfoRepository {
@@ -14,4 +15,9 @@ interface InfoRepository {
 	): Result<ParticipateResponse>
 	
 	suspend fun getUserActivityList(userId: String, gardenName: String): Result<ActivityResponse>
+	
+	suspend fun requestExitActivity(
+		userId: String,
+		activityInfo: ActivityInfo
+	): Result<ExitResponse>
 }

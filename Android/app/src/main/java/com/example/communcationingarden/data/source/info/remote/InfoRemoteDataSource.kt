@@ -3,6 +3,7 @@ package com.example.communcationingarden.data.source.info.remote
 import com.example.communcationingarden.data.ActivityInfo
 import com.example.communcationingarden.data.source.info.InfoDataSource
 import com.example.communcationingarden.network.ActivityResponse
+import com.example.communcationingarden.network.ExitResponse
 import com.example.communcationingarden.network.InfoRetrofitService
 import com.example.communcationingarden.network.ParticipateResponse
 import kotlinx.coroutines.Dispatchers
@@ -46,6 +47,20 @@ class InfoRemoteDataSource(private val infoRetrofitService: InfoRetrofitService)
 					put("id", userId)
 				}
 				infoRetrofitService.requestUserActivityList(body)
+			}
+		}
+	
+	override suspend fun requestExitActivity(
+		userId: String,
+		activityInfo: ActivityInfo
+	): Result<ExitResponse> =
+		withContext(Dispatchers.IO) {
+			kotlin.runCatching {
+				val body = HashMap<String, String>().apply {
+					put("activity_no", activityInfo.no.toString())
+					put("id", userId)
+				}
+				infoRetrofitService.requestExitActivity(body)
 			}
 		}
 }
