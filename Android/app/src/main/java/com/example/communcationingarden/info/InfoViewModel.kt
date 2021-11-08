@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.communcationingarden.data.ActivityInfo
 import com.example.communcationingarden.data.GardenInfo
+import com.example.communcationingarden.data.RegistActivityInfo
 import com.example.communcationingarden.data.SnsInfo
 import com.example.communcationingarden.data.source.info.InfoRepository
 import kotlinx.coroutines.launch
@@ -60,6 +61,17 @@ class InfoViewModel(private val infoRepository: InfoRepository) : ViewModel() {
 		infoRepository.requestExitActivity(userId!!, activityInfo)
 			.onSuccess {
 				loadMyActivity()
+			}
+	}
+	
+	fun requestRegistActivity(registActivityInfo: RegistActivityInfo) = viewModelScope.launch {
+		infoRepository.requestRegistActivity(
+			userId!!,
+			_selectGardenLiveData.value!!.name,
+			registActivityInfo
+		)
+			.onSuccess {
+				loadActivityList()
 			}
 	}
 }

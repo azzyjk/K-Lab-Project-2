@@ -67,7 +67,7 @@ class CommunityFragment : Fragment() {
 		val dialog = AddDialogFragment()
 		dialog.listener = object : AddDialogFragment.NoticeDialogListener {
 			override fun onDialogPositiveClick(registActivityInfo: RegistActivityInfo) {
-				println("HELLO")
+				infoViewModel.requestRegistActivity(registActivityInfo)
 			}
 		}
 		dialog.show(childFragmentManager, "ADD_DIALOG")
