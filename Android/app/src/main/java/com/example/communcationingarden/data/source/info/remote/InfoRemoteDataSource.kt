@@ -1,11 +1,9 @@
 package com.example.communcationingarden.data.source.info.remote
 
 import com.example.communcationingarden.data.ActivityInfo
+import com.example.communcationingarden.data.RegistActivityInfo
 import com.example.communcationingarden.data.source.info.InfoDataSource
-import com.example.communcationingarden.network.ActivityResponse
-import com.example.communcationingarden.network.ExitResponse
-import com.example.communcationingarden.network.InfoRetrofitService
-import com.example.communcationingarden.network.ParticipateResponse
+import com.example.communcationingarden.network.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -61,6 +59,26 @@ class InfoRemoteDataSource(private val infoRetrofitService: InfoRetrofitService)
 					put("id", userId)
 				}
 				infoRetrofitService.requestExitActivity(body)
+			}
+		}
+	
+	override suspend fun requestRegistActivity(
+		userId: String,
+		gardenName: String,
+		registActivityInfo: RegistActivityInfo
+	): Result<RegistActivityResponse> =
+		withContext(Dispatchers.IO) {
+			kotlin.runCatching {
+				val body = HashMap<String, String>().apply {
+					put("id", userId)
+					put("garden", gardenName)
+					put("name", registActivityInfo.activityName)
+					put("date", registActivityInfo.date)
+					put("time", registActivityInfo.time)
+					put("url", registActivityInfo.time)
+					put("max", registActivityInfo.max.toString())
+				}
+				infoRetrofitService.requestRegistActivity(body)
 			}
 		}
 }

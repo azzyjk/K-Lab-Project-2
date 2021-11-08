@@ -16,4 +16,7 @@ interface InfoRetrofitService {
 	
 	@POST("/out_activity")
 	suspend fun requestExitActivity(@Body body: HashMap<String, String>): ExitResponse
+	
+	@POST("/add_activity")
+	suspend fun requestRegistActivity(@Body body: HashMap<String, String>): RegistActivityResponse
 }
