@@ -26,4 +26,10 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="AddActivityDialogEditTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingVertical">15dp</item>
+        <item name="android:layout_marginHorizontal">20dp</item>
+    </style>
 </resources>

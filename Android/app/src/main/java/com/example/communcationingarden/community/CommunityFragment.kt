@@ -1,12 +1,12 @@
 package com.example.communcationingarden.community
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.communcationingarden.R
 import com.example.communcationingarden.adapter.CommunityActivityListAdapter
+import com.example.communcationingarden.data.RegistActivityInfo
 import com.example.communcationingarden.databinding.FragmentCommunityBinding
 import com.example.communcationingarden.info.InfoViewModel
 
@@ -16,6 +16,26 @@ class CommunityFragment : Fragment() {
 	private val binding get() = _binding!!
 	private val infoViewModel: InfoViewModel by activityViewModels()
 	private lateinit var activityListAdapter: CommunityActivityListAdapter
+	
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setHasOptionsMenu(true)
+	}
+	
+	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+		super.onCreateOptionsMenu(menu, inflater)
+		inflater.inflate(R.menu.community_menu, menu)
+	}
+	
+	override fun onOptionsItemSelected(item: MenuItem): Boolean {
+		return when (item.itemId) {
+			R.id.action_add -> {
+				showAddDialog()
+				true
+			}
+			else -> super.onOptionsItemSelected(item)
+		}
+	}
 	
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +61,16 @@ class CommunityFragment : Fragment() {
 		activityListLiveData.observe(viewLifecycleOwner) { activityList ->
 			activityListAdapter.updateActivityList(activityList)
 		}
+	}
+	
+	private fun showAddDialog() {
+		val dialog = AddDialogFragment()
+		dialog.listener = object : AddDialogFragment.NoticeDialogListener {
+			override fun onDialogPositiveClick(registActivityInfo: RegistActivityInfo) {
+				println("HELLO")
+			}
+		}
+		dialog.show(childFragmentManager, "ADD_DIALOG")
 	}
 	
 	override fun onDestroyView() {

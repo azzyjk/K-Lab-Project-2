@@ -15,4 +15,10 @@
     <string name="cancel">Cancel</string>
     <string name="my">My</string>
     <string name="sns">SNS</string>
+    <string name="add_activity">Add Activity</string>
+    <string name="activity_name">Activity Name</string>
+    <string name="date">Date ex) yyyy-mm-dd</string>
+    <string name="time">Time ex) hh:mm:ss</string>
+    <string name="number_of_people">Number of People</string>
+    <string name="url">URL ex) discord, kakao talk link</string>
 </resources>
