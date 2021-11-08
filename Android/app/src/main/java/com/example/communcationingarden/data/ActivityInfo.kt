@@ -18,4 +18,5 @@ data class ActivityInfo(
 ) {
 	
 	val participantCountText get() = "$currentParticipantsNumber / $maxParticipantsNumber"
+	val dateText get() = date.substring(0, 10)
 }

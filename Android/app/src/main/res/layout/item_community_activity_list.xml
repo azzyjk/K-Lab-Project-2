@@ -38,11 +38,22 @@
             android:id="@+id/dateTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{activity.date}"
+            android:text="@{activity.dateText}"
             android:textSize="20sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/joinButton"
+            app:layout_constraintRight_toLeftOf="@id/timeTextView"
             app:layout_constraintTop_toBottomOf="@id/activityNameTextView"
+            tools:text="@string/short_test_text" />
+
+        <TextView
+            app:layout_constraintTop_toTopOf="@id/dateTextView"
+            android:id="@+id/timeTextView"
+            android:text="@{activity.time}"
+            android:layout_width="0dp"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/dateTextView"
+            app:layout_constraintRight_toLeftOf="@id/joinButton"
             tools:text="@string/short_test_text" />
 
         <Button
