@@ -20,7 +20,7 @@
         android:title="@string/my" />
 
     <item
-        android:id="@+id/snsFragment"
+        android:id="@+id/infoFragment"
         android:enabled="true"
         android:icon="@drawable/ic_outline_image_search_24"
         android:title="@string/info" />
