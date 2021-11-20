@@ -1,4 +1,4 @@
-package com.example.communcationingarden.data.source.info
+package com.example.communcationingarden.data.source.garden
 
 import com.example.communcationingarden.data.ActivityInfo
 import com.example.communcationingarden.data.RegistActivityInfo
@@ -7,7 +7,7 @@ import com.example.communcationingarden.network.ExitResponse
 import com.example.communcationingarden.network.ParticipateResponse
 import com.example.communcationingarden.network.RegistActivityResponse
 
-interface InfoDataSource {
+interface GardenDataSource {
 	interface Local {
 	}
 	

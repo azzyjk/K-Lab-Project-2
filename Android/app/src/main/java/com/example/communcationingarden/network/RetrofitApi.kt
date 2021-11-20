@@ -7,7 +7,7 @@ object RetrofitApi {
 	
 	private const val kLabBaseUrl = "https://klab0.herokuapp.com"
 	private var loginRetrofitInstance: LoginRetrofitService? = null
-	private var infoRetrofitInstance: InfoRetrofitService? = null
+	private var gardenRetrofitInstance: GardenRetrofitService? = null
 	
 	fun getLoginRetrofitInstance(): LoginRetrofitService {
 		if (loginRetrofitInstance == null) {
@@ -20,14 +20,14 @@ object RetrofitApi {
 		return loginRetrofitInstance!!
 	}
 	
-	fun getInfoRetrofitInstance(): InfoRetrofitService {
-		if (infoRetrofitInstance == null) {
-			infoRetrofitInstance = Retrofit.Builder()
+	fun getInfoRetrofitInstance(): GardenRetrofitService {
+		if (gardenRetrofitInstance == null) {
+			gardenRetrofitInstance = Retrofit.Builder()
 				.baseUrl(kLabBaseUrl)
 				.addConverterFactory(GsonConverterFactory.create())
 				.build()
-				.create(InfoRetrofitService::class.java)
+				.create(GardenRetrofitService::class.java)
 		}
-		return infoRetrofitInstance!!
+		return gardenRetrofitInstance!!
 	}
 }

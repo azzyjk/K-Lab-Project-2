@@ -8,10 +8,10 @@ import com.example.communcationingarden.data.ActivityInfo
 import com.example.communcationingarden.data.GardenInfo
 import com.example.communcationingarden.data.RegistActivityInfo
 import com.example.communcationingarden.data.SnsInfo
-import com.example.communcationingarden.data.source.info.InfoRepository
+import com.example.communcationingarden.data.source.garden.GardenRepository
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val infoRepository: InfoRepository): ViewModel() {
+class HomeViewModel(private val gardenRepository: GardenRepository): ViewModel() {
 	
 	private val _selectGardenLiveData = MutableLiveData<GardenInfo>()
 	val selectGardenInfoLiveData: LiveData<GardenInfo> get() = _selectGardenLiveData
@@ -33,7 +33,7 @@ class HomeViewModel(private val infoRepository: InfoRepository): ViewModel() {
 	
 	fun loadActivityList() = viewModelScope.launch {
 		_selectGardenLiveData.value?.let { gardenInfo ->
-			infoRepository.getAllActivityList(gardenInfo.name)
+			gardenRepository.getAllActivityList(gardenInfo.name)
 				.onSuccess { response ->
 					_activityListLiveData.value = response.activityList
 				}
@@ -41,7 +41,7 @@ class HomeViewModel(private val infoRepository: InfoRepository): ViewModel() {
 	}
 	
 	fun loadMyActivity() = viewModelScope.launch {
-		infoRepository.getUserActivityList(userId!!, _selectGardenLiveData.value!!.name)
+		gardenRepository.getUserActivityList(userId!!, _selectGardenLiveData.value!!.name)
 			.onSuccess { response ->
 				_myActivityListLiveData.value = response.activityList
 			}
@@ -51,21 +51,21 @@ class HomeViewModel(private val infoRepository: InfoRepository): ViewModel() {
 	}
 	
 	fun requestParticipate(activityInfo: ActivityInfo) = viewModelScope.launch {
-		infoRepository.requestParticipate(userId!!, activityInfo)
+		gardenRepository.requestParticipate(userId!!, activityInfo)
 			.onSuccess {
 				loadActivityList()
 			}
 	}
 	
 	fun requestExitActivity(activityInfo: ActivityInfo) = viewModelScope.launch {
-		infoRepository.requestExitActivity(userId!!, activityInfo)
+		gardenRepository.requestExitActivity(userId!!, activityInfo)
 			.onSuccess {
 				loadMyActivity()
 			}
 	}
 	
 	fun requestRegistActivity(registActivityInfo: RegistActivityInfo) = viewModelScope.launch {
-		infoRepository.requestRegistActivity(
+		gardenRepository.requestRegistActivity(
 			userId!!,
 			_selectGardenLiveData.value!!.name,
 			registActivityInfo

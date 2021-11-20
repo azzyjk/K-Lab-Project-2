@@ -1,9 +1,9 @@
 package com.example.communcationingarden.util
 
 import android.content.Context
-import com.example.communcationingarden.data.source.info.InfoRepositoryImpl
-import com.example.communcationingarden.data.source.info.local.InfoLocalDataSource
-import com.example.communcationingarden.data.source.info.remote.InfoRemoteDataSource
+import com.example.communcationingarden.data.source.garden.GardenRepositoryImpl
+import com.example.communcationingarden.data.source.garden.local.GardenLocalDataSource
+import com.example.communcationingarden.data.source.garden.remote.GardenRemoteDataSource
 import com.example.communcationingarden.data.source.login.LoginRepositoryImpl
 import com.example.communcationingarden.data.source.login.local.LoginLocalDataSource
 import com.example.communcationingarden.data.source.login.remote.LoginRemoteDataSource
@@ -25,17 +25,17 @@ object Injection {
 		return LoginRemoteDataSource(RetrofitApi.getLoginRetrofitInstance())
 	}
 	
-	fun provideInfoRepository(context: Context): InfoRepositoryImpl {
+	fun provideInfoRepository(context: Context): GardenRepositoryImpl {
 		val infoLocalDataSource = provideInfoLocalDataSource(context)
 		val infoRemoteDataSource = provideInfoRemoteDataSource()
-		return InfoRepositoryImpl(infoLocalDataSource, infoRemoteDataSource)
+		return GardenRepositoryImpl(infoLocalDataSource, infoRemoteDataSource)
 	}
 	
-	fun provideInfoLocalDataSource(context: Context): InfoLocalDataSource {
-		return InfoLocalDataSource()
+	fun provideInfoLocalDataSource(context: Context): GardenLocalDataSource {
+		return GardenLocalDataSource()
 	}
 	
-	fun provideInfoRemoteDataSource(): InfoRemoteDataSource {
-		return InfoRemoteDataSource(RetrofitApi.getInfoRetrofitInstance())
+	fun provideInfoRemoteDataSource(): GardenRemoteDataSource {
+		return GardenRemoteDataSource(RetrofitApi.getInfoRetrofitInstance())
 	}
 }

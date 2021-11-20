@@ -1,14 +1,14 @@
-package com.example.communcationingarden.data.source.info.remote
+package com.example.communcationingarden.data.source.garden.remote
 
 import com.example.communcationingarden.data.ActivityInfo
 import com.example.communcationingarden.data.RegistActivityInfo
-import com.example.communcationingarden.data.source.info.InfoDataSource
+import com.example.communcationingarden.data.source.garden.GardenDataSource
 import com.example.communcationingarden.network.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class InfoRemoteDataSource(private val infoRetrofitService: InfoRetrofitService) :
-	InfoDataSource.Remote {
+class GardenRemoteDataSource(private val gardenRetrofitService: GardenRetrofitService):
+	GardenDataSource.Remote {
 	
 	override suspend fun getAllActivityList(gardenName: String): Result<ActivityResponse> =
 		withContext(Dispatchers.IO) {
@@ -16,7 +16,7 @@ class InfoRemoteDataSource(private val infoRetrofitService: InfoRetrofitService)
 				val body = HashMap<String, String>().apply {
 					put("garden", gardenName)
 				}
-				infoRetrofitService.getAllActivityList(body)
+				gardenRetrofitService.getAllActivityList(body)
 			}
 		}
 	
@@ -30,7 +30,7 @@ class InfoRemoteDataSource(private val infoRetrofitService: InfoRetrofitService)
 					put("activity_no", activityInfo.no.toString())
 					put("id", userId)
 				}
-				infoRetrofitService.requestParticipateActivity(body)
+				gardenRetrofitService.requestParticipateActivity(body)
 			}
 		}
 	
@@ -44,7 +44,7 @@ class InfoRemoteDataSource(private val infoRetrofitService: InfoRetrofitService)
 					put("garden", gardenName)
 					put("id", userId)
 				}
-				infoRetrofitService.requestUserActivityList(body)
+				gardenRetrofitService.requestUserActivityList(body)
 			}
 		}
 	
@@ -58,7 +58,7 @@ class InfoRemoteDataSource(private val infoRetrofitService: InfoRetrofitService)
 					put("activity_no", activityInfo.no.toString())
 					put("id", userId)
 				}
-				infoRetrofitService.requestExitActivity(body)
+				gardenRetrofitService.requestExitActivity(body)
 			}
 		}
 	
@@ -78,7 +78,7 @@ class InfoRemoteDataSource(private val infoRetrofitService: InfoRetrofitService)
 					put("url", registActivityInfo.time)
 					put("max", registActivityInfo.max.toString())
 				}
-				infoRetrofitService.requestRegistActivity(body)
+				gardenRetrofitService.requestRegistActivity(body)
 			}
 		}
 }
