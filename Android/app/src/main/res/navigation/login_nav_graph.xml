@@ -8,6 +8,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.communcationingarden.login.LoginFragment"
+        tools:layout="@layout/fragment_login"
         android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_signupFragment"
@@ -30,13 +31,14 @@
         android:name="com.example.communcationingarden.select.SelectFragment"
         android:label="fragment_select"
         tools:layout="@layout/fragment_select">
+
         <action
-            android:id="@+id/action_selectFragment_to_infoActivity"
-            app:destination="@id/infoActivity" />
+            android:id="@+id/action_selectFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
     </fragment>
     <activity
-        android:id="@+id/infoActivity"
-        android:name="com.example.communcationingarden.info.InfoActivity"
-        android:label="activity_info"
-        tools:layout="@layout/activity_info" />
+        android:id="@+id/homeActivity"
+        android:name="com.example.communcationingarden.home.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
 </navigation>

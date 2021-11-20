@@ -102,7 +102,7 @@ class SelectFragment : Fragment() {
 				"selectGarden" to selectGardenInfoJson,
 				"userId" to userId
 			)
-			navigationController.navigate(R.id.infoActivity, bundle)
+			navigationController.navigate(R.id.homeActivity, bundle)
 		})
 		gardenListLiveData.observe(viewLifecycleOwner) { gardenList ->
 			gardenListAdapter.updateGardenList(gardenList)

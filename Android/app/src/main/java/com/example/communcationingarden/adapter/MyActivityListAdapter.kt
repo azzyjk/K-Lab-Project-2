@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.communcationingarden.data.ActivityInfo
 import com.example.communcationingarden.databinding.ItemMyActivityListBinding
-import com.example.communcationingarden.info.InfoViewModel
+import com.example.communcationingarden.home.HomeViewModel
 
 class MyActivityListAdapter(
-	private val infoViewModel: InfoViewModel
+	private val homeViewModel: HomeViewModel
 ) :
 	RecyclerView.Adapter<MyActivityListAdapter.CommunityActivityViewHolder>() {
 	
@@ -16,13 +16,13 @@ class MyActivityListAdapter(
 	
 	class CommunityActivityViewHolder(
 		private val binding: ItemMyActivityListBinding,
-		private val infoViewModel: InfoViewModel
-	) :
+		private val homeViewModel: HomeViewModel
+	):
 		RecyclerView.ViewHolder(binding.root) {
 		
 		fun setup(activity: ActivityInfo) {
 			binding.activity = activity
-			binding.viewModel = infoViewModel
+			binding.viewModel = homeViewModel
 			binding.executePendingBindings()
 		}
 	}
@@ -30,7 +30,7 @@ class MyActivityListAdapter(
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommunityActivityViewHolder {
 		val binding =
 			ItemMyActivityListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-		return CommunityActivityViewHolder(binding, infoViewModel)
+		return CommunityActivityViewHolder(binding, homeViewModel)
 	}
 	
 	override fun onBindViewHolder(holder: CommunityActivityViewHolder, position: Int) {

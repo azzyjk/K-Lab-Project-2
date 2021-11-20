@@ -1,4 +1,4 @@
-package com.example.communcationingarden.info
+package com.example.communcationingarden.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ import com.example.communcationingarden.data.SnsInfo
 import com.example.communcationingarden.data.source.info.InfoRepository
 import kotlinx.coroutines.launch
 
-class InfoViewModel(private val infoRepository: InfoRepository) : ViewModel() {
+class HomeViewModel(private val infoRepository: InfoRepository): ViewModel() {
 	
 	private val _selectGardenLiveData = MutableLiveData<GardenInfo>()
 	val selectGardenInfoLiveData: LiveData<GardenInfo> get() = _selectGardenLiveData

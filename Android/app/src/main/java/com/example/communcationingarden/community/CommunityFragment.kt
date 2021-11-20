@@ -8,13 +8,13 @@ import com.example.communcationingarden.R
 import com.example.communcationingarden.adapter.CommunityActivityListAdapter
 import com.example.communcationingarden.data.RegistActivityInfo
 import com.example.communcationingarden.databinding.FragmentCommunityBinding
-import com.example.communcationingarden.info.InfoViewModel
+import com.example.communcationingarden.home.HomeViewModel
 
 class CommunityFragment : Fragment() {
 	
 	private var _binding: FragmentCommunityBinding? = null
 	private val binding get() = _binding!!
-	private val infoViewModel: InfoViewModel by activityViewModels()
+	private val homeViewModel: HomeViewModel by activityViewModels()
 	private lateinit var activityListAdapter: CommunityActivityListAdapter
 	
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,15 +49,15 @@ class CommunityFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 		initView()
 		initObserve()
-		infoViewModel.loadActivityList()
+		homeViewModel.loadActivityList()
 	}
 	
 	private fun initView() = with(binding) {
-		activityListAdapter = CommunityActivityListAdapter(infoViewModel)
+		activityListAdapter = CommunityActivityListAdapter(homeViewModel)
 		communityActivityRecyclerView.adapter = activityListAdapter
 	}
 	
-	private fun initObserve() = with(infoViewModel) {
+	private fun initObserve() = with(homeViewModel) {
 		activityListLiveData.observe(viewLifecycleOwner) { activityList ->
 			activityListAdapter.updateActivityList(activityList)
 		}
@@ -65,9 +65,9 @@ class CommunityFragment : Fragment() {
 	
 	private fun showAddDialog() {
 		val dialog = AddDialogFragment()
-		dialog.listener = object : AddDialogFragment.NoticeDialogListener {
+		dialog.listener = object: AddDialogFragment.NoticeDialogListener {
 			override fun onDialogPositiveClick(registActivityInfo: RegistActivityInfo) {
-				infoViewModel.requestRegistActivity(registActivityInfo)
+				homeViewModel.requestRegistActivity(registActivityInfo)
 			}
 		}
 		dialog.show(childFragmentManager, "ADD_DIALOG")

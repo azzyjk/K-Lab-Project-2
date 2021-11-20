@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.communcationingarden.info.InfoViewModel" />
+            type="com.example.communcationingarden.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -21,4 +21,5 @@
     <string name="time">Time ex) hh:mm:ss</string>
     <string name="number_of_people">Number of People</string>
     <string name="url">URL ex) discord, kakao talk link</string>
+    <string name="home">Home</string>
 </resources>

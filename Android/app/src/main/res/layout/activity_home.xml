@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".info.InfoActivity">
+    tools:context=".home.HomeActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
@@ -23,7 +23,7 @@
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolBar"
-        app:navGraph="@navigation/info_nav_graph" />
+        app:navGraph="@navigation/home_nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
@@ -33,5 +33,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/info_navHostFragment"
-        app:menu="@menu/info_menu" />
+        app:menu="@menu/home_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
