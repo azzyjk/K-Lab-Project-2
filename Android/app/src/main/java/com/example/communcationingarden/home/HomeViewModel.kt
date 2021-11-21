@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.communcationingarden.Event
 import com.example.communcationingarden.data.ActivityInfo
 import com.example.communcationingarden.data.GardenInfo
 import com.example.communcationingarden.data.GardenPicture
@@ -31,6 +32,9 @@ class HomeViewModel @Inject constructor(
     
     private val _gardenPictureListLiveData = MutableLiveData<List<GardenPicture>>()
     val gardenPictureListLiveData get() = _gardenPictureListLiveData
+    
+    private val _infoDetailEvent = MutableLiveData<Event<GardenPicture>>()
+    val infoDetailEvent: LiveData<Event<GardenPicture>> = _infoDetailEvent
     
     private var userId: String? = null
     
@@ -91,5 +95,9 @@ class HomeViewModel @Inject constructor(
             .onSuccess {
                 loadActivityList()
             }
+    }
+    
+    fun openInfoDetailScreen(gardenPicture: GardenPicture) {
+        _infoDetailEvent.value = Event(gardenPicture)
     }
 }
