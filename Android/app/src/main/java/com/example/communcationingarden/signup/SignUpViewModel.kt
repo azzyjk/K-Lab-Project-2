@@ -7,11 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.communcationingarden.Event
 import com.example.communcationingarden.data.SignUpInfo
 import com.example.communcationingarden.data.source.login.LoginRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SignUpViewModel(
+@HiltViewModel
+class SignUpViewModel @Inject constructor(
 	private val loginRepository: LoginRepository
-) : ViewModel() {
+): ViewModel() {
 	
 	private val _loginScreenEvent = MutableLiveData<Event<Unit>>()
 	val loginScreenEvent: LiveData<Event<Unit>> = _loginScreenEvent

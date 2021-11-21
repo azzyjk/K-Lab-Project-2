@@ -6,8 +6,9 @@ import com.example.communcationingarden.network.ActivityResponse
 import com.example.communcationingarden.network.ExitResponse
 import com.example.communcationingarden.network.ParticipateResponse
 import com.example.communcationingarden.network.RegistActivityResponse
+import javax.inject.Inject
 
-class ActivityRepositoryImpl(
+class ActivityRepositoryImpl @Inject constructor(
     private val activityRemoteDataSource: ActivityDataSource.Remote
 ): ActivityRepository {
     

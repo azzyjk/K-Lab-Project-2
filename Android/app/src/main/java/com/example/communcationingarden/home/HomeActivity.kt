@@ -8,19 +8,18 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.communcationingarden.R
-import com.example.communcationingarden.ViewModelFactory
 import com.example.communcationingarden.data.GardenInfo
 import com.example.communcationingarden.databinding.ActivityHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
+@AndroidEntryPoint
 class HomeActivity: AppCompatActivity() {
     
     private lateinit var binding: ActivityHomeBinding
     private lateinit var navigationController: NavController
-    private val homeViewModel: HomeViewModel by viewModels {
-        ViewModelFactory(this)
-    }
+    private val homeViewModel: HomeViewModel by viewModels()
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

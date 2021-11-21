@@ -9,7 +9,9 @@ import com.example.communcationingarden.adapter.CommunityActivityListAdapter
 import com.example.communcationingarden.data.RegistActivityInfo
 import com.example.communcationingarden.databinding.FragmentCommunityBinding
 import com.example.communcationingarden.home.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CommunityFragment : Fragment() {
 	
 	private var _binding: FragmentCommunityBinding? = null

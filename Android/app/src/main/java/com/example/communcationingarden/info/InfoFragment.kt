@@ -9,7 +9,9 @@ import androidx.fragment.app.activityViewModels
 import com.example.communcationingarden.adapter.SnsListAdapter
 import com.example.communcationingarden.databinding.FragmentInfoBinding
 import com.example.communcationingarden.home.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InfoFragment: Fragment() {
     
     private var _binding: FragmentInfoBinding? = null

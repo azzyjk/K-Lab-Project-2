@@ -9,7 +9,9 @@ import androidx.fragment.app.activityViewModels
 import com.example.communcationingarden.adapter.MyActivityListAdapter
 import com.example.communcationingarden.databinding.FragmentMyBinding
 import com.example.communcationingarden.home.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyFragment : Fragment() {
     
     private var _binding: FragmentMyBinding? = null

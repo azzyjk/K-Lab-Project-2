@@ -6,8 +6,9 @@ import com.example.communcationingarden.data.source.activity.ActivityDataSource
 import com.example.communcationingarden.network.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class ActivityRemoteDataSource(
+class ActivityRemoteDataSource @Inject constructor(
     private val activityRetrofitService: ActivityRetrofitService
 ): ActivityDataSource.Remote {
     

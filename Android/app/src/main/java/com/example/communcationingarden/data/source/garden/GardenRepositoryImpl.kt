@@ -3,8 +3,9 @@ package com.example.communcationingarden.data.source.garden
 import com.example.communcationingarden.data.Position
 import com.example.communcationingarden.data.source.garden.remote.GardenRemoteDataSource
 import com.example.communcationingarden.network.GardenListResponse
+import javax.inject.Inject
 
-class GardenRepositoryImpl(
+class GardenRepositoryImpl @Inject constructor(
     private val remoteDataSource: GardenRemoteDataSource
 ): GardenRepository {
     

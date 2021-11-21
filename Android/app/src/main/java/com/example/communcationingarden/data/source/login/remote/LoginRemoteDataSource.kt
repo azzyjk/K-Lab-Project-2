@@ -8,8 +8,9 @@ import com.example.communcationingarden.network.SignInResponse
 import com.example.communcationingarden.network.SignUpResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class LoginRemoteDataSource(
+class LoginRemoteDataSource @Inject constructor(
     private val loginRetrofitService: LoginRetrofitService
 ): LoginDataSource.Remote {
     

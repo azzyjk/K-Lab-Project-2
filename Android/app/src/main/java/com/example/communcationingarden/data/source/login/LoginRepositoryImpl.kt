@@ -5,8 +5,9 @@ import com.example.communcationingarden.data.SignUpInfo
 import com.example.communcationingarden.data.source.login.remote.LoginRemoteDataSource
 import com.example.communcationingarden.network.SignInResponse
 import com.example.communcationingarden.network.SignUpResponse
+import javax.inject.Inject
 
-class LoginRepositoryImpl(
+class LoginRepositoryImpl @Inject constructor(
     private val remoteDataSource: LoginRemoteDataSource
 ): LoginRepository {
     
