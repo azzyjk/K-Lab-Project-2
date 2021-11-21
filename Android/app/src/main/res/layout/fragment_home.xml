@@ -42,14 +42,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/gardenLocation"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/info_margin_horizontal"
-                    android:layout_marginBottom="30dp"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_outline_info_24"
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    android:layout_margin="10dp"
                     app:layout_constraintBottom_toTopOf="@id/gardenInfoTextView"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -58,11 +57,12 @@
                 <TextView
                     android:id="@+id/gardenInfoTextView"
                     android:layout_width="0dp"
+                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.selectGardenInfoLiveData.description}"
-                    app:layout_constraintLeft_toLeftOf="@id/gardenLocation"
-                    app:layout_constraintRight_toRightOf="@id/gardenLocation"
-                    app:layout_constraintTop_toBottomOf="@id/gardenLocation"
+                    app:layout_constraintLeft_toLeftOf="@id/mapView"
+                    app:layout_constraintRight_toRightOf="@id/mapView"
+                    app:layout_constraintTop_toBottomOf="@id/mapView"
                     tools:text="@string/long_test_text" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
