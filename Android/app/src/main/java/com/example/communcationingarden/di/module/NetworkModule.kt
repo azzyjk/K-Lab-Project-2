@@ -1,6 +1,7 @@
 package com.example.communcationingarden.di.module
 
 import com.example.communcationingarden.network.ActivityRetrofitService
+import com.example.communcationingarden.network.GardenPictureRetrofitService
 import com.example.communcationingarden.network.GardenRetrofitService
 import com.example.communcationingarden.network.LoginRetrofitService
 import dagger.Module
@@ -43,4 +44,13 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ActivityRetrofitService::class.java)
+    
+    @Singleton
+    @Provides
+    fun provideGardenPictureRetrofitService() =
+        Retrofit.Builder()
+            .baseUrl(KLAB_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(GardenPictureRetrofitService::class.java)
 }

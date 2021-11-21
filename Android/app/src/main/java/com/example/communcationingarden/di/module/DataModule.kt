@@ -8,6 +8,10 @@ import com.example.communcationingarden.data.source.garden.GardenDataSource
 import com.example.communcationingarden.data.source.garden.GardenRepository
 import com.example.communcationingarden.data.source.garden.GardenRepositoryImpl
 import com.example.communcationingarden.data.source.garden.remote.GardenRemoteDataSource
+import com.example.communcationingarden.data.source.gardenpicture.GardenPictureDataSource
+import com.example.communcationingarden.data.source.gardenpicture.GardenPictureRepository
+import com.example.communcationingarden.data.source.gardenpicture.GardenPictureRepositoryImpl
+import com.example.communcationingarden.data.source.gardenpicture.remote.GardenPictureRemoteDataSource
 import com.example.communcationingarden.data.source.login.LoginDataSource
 import com.example.communcationingarden.data.source.login.LoginRepository
 import com.example.communcationingarden.data.source.login.LoginRepositoryImpl
@@ -57,5 +61,17 @@ abstract class DataSourceModule {
     abstract fun bindLoginRepository(
         loginRepositoryImpl: LoginRepositoryImpl
     ): LoginRepository
+    
+    @Singleton
+    @Binds
+    abstract fun bindGardenPictureRemoteDataSource(
+        gardenPictureRemoteDataSource: GardenPictureRemoteDataSource
+    ): GardenPictureDataSource.Remote
+    
+    @Singleton
+    @Binds
+    abstract fun bindGardenPictureRepository(
+        gardenPictureRepositoryImpl: GardenPictureRepositoryImpl
+    ): GardenPictureRepository
 }
 
