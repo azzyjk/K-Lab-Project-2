@@ -12,6 +12,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,8 +49,12 @@ class HomeFragment: Fragment(), OnMapReadyCallback {
         homeViewModel.selectGardenInfoLiveData.observe(viewLifecycleOwner) { gardenInfo ->
             val location = LatLng(gardenInfo.latitude, gardenInfo.longitude)
             val zoomSize = 15.0f
+            val marker = MarkerOptions().position(location)
+                .title(gardenInfo.name)
+    
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(location))
             googleMap.moveCamera(CameraUpdateFactory.zoomTo(zoomSize))
+            googleMap.addMarker(marker)
         }
     }
     
