@@ -27,6 +27,15 @@
         android:id="@+id/infoFragment"
         android:name="com.example.communcationingarden.info.InfoFragment"
         android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info">
+        <action
+            android:id="@+id/action_infoFragment_to_infoDetailFragment"
+            app:destination="@id/infoDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoDetailFragment"
+        android:name="com.example.communcationingarden.infodetail.InfoDetailFragment"
+        android:label="fragment_info_detail"
+        tools:layout="@layout/fragment_info_detail" />
 
 </navigation>
