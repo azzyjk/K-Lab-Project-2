@@ -31,7 +31,7 @@ class InfoFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initObserve()
-        homeViewModel.loadSnsList()
+        homeViewModel.loadGardenPictureList()
     }
     
     private fun initView() = with(binding) {
@@ -39,8 +39,8 @@ class InfoFragment: Fragment() {
     }
     
     private fun initObserve() = with(homeViewModel) {
-        gardenPictureListLiveData.observe(viewLifecycleOwner) { snsList ->
-            infoListAdapter.updateSnsInfoList(snsList)
+        gardenPictureListLiveData.observe(viewLifecycleOwner) { gardenPictureList ->
+            infoListAdapter.updateSnsInfoList(gardenPictureList)
         }
     }
     
