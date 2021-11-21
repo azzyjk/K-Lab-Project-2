@@ -8,6 +8,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.communcationingarden.EventObserver
 import com.example.communcationingarden.R
 import com.example.communcationingarden.adapter.GardenPictureListAdapter
@@ -51,6 +53,10 @@ class InfoFragment: Fragment() {
     
     private fun initView() = with(binding) {
         gardenPictureRecyclerView.adapter = infoListAdapter
+        gardenPictureRecyclerView.layoutManager =
+            StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL).apply {
+                gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
+            }
     }
     
     private fun initObserve() = with(homeViewModel) {
