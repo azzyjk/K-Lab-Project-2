@@ -21,7 +21,10 @@ class InfoDetailFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentInfoDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentInfoDetailBinding.inflate(inflater, container, false).apply {
+            viewModel = infoDetailViewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
         return binding.root
     }
     
