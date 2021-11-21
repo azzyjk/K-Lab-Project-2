@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.communcationingarden.adapter.SnsListAdapter
+import com.example.communcationingarden.adapter.GardenPictureListAdapter
 import com.example.communcationingarden.databinding.FragmentInfoBinding
 import com.example.communcationingarden.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +17,7 @@ class InfoFragment: Fragment() {
     private var _binding: FragmentInfoBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by activityViewModels()
-    private val snsListAdapter = SnsListAdapter()
+    private val infoListAdapter = GardenPictureListAdapter()
     
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,12 +35,12 @@ class InfoFragment: Fragment() {
     }
     
     private fun initView() = with(binding) {
-        snsRecyclerView.adapter = snsListAdapter
+        gardenPictureRecyclerView.adapter = infoListAdapter
     }
     
     private fun initObserve() = with(homeViewModel) {
-        snsInfoListLiveData.observe(viewLifecycleOwner) { snsList ->
-            snsListAdapter.updateSnsInfoList(snsList)
+        gardenPictureListLiveData.observe(viewLifecycleOwner) { snsList ->
+            infoListAdapter.updateSnsInfoList(snsList)
         }
     }
     

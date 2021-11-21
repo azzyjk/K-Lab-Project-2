@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.communcationingarden.data.SnsInfo
 import com.example.communcationingarden.databinding.ItemSnsListBinding
 
-class SnsListAdapter : RecyclerView.Adapter<SnsListAdapter.SnsViewHolder>() {
+class GardenPictureListAdapter: RecyclerView.Adapter<GardenPictureListAdapter.SnsViewHolder>() {
 	
-	private var snsInfoList = listOf<SnsInfo>()
+	private var infoList = listOf<SnsInfo>()
 	
-	class SnsViewHolder(val binding: ItemSnsListBinding) : RecyclerView.ViewHolder(binding.root) {
+	class SnsViewHolder(val binding: ItemSnsListBinding): RecyclerView.ViewHolder(binding.root) {
 		
 		fun setup(snsInfo: SnsInfo) {
 		}
@@ -22,13 +22,13 @@ class SnsListAdapter : RecyclerView.Adapter<SnsListAdapter.SnsViewHolder>() {
 	}
 	
 	override fun onBindViewHolder(holder: SnsViewHolder, position: Int) {
-		holder.setup(snsInfoList[position])
+		holder.setup(infoList[position])
 	}
 	
-	override fun getItemCount(): Int = snsInfoList.size
+	override fun getItemCount(): Int = infoList.size
 	
 	fun updateSnsInfoList(newSnsInfoList: List<SnsInfo>) {
-		snsInfoList = newSnsInfoList
+		infoList = newSnsInfoList
 		notifyDataSetChanged()
 	}
 }

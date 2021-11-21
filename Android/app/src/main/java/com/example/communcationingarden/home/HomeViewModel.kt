@@ -20,12 +20,16 @@ class HomeViewModel @Inject constructor(
     
     private val _selectGardenLiveData = MutableLiveData<GardenInfo>()
     val selectGardenInfoLiveData: LiveData<GardenInfo> get() = _selectGardenLiveData
+    
     private val _activityListLiveData = MutableLiveData<List<ActivityInfo>>()
     val activityListLiveData get() = _activityListLiveData
+    
     private val _myActivityListLiveData = MutableLiveData<List<ActivityInfo>>()
     val myActivityListLiveData get() = _myActivityListLiveData
-    private val _snsInfoListLiveData = MutableLiveData<List<SnsInfo>>()
-    val snsInfoListLiveData get() = _snsInfoListLiveData
+    
+    private val _gardenPictureListLiveData = MutableLiveData<List<SnsInfo>>()
+    val gardenPictureListLiveData get() = _gardenPictureListLiveData
+    
     private var userId: String? = null
     
     fun setSelectGarden(selectGardenInfo: GardenInfo) {
@@ -52,7 +56,8 @@ class HomeViewModel @Inject constructor(
             }
     }
     
-    fun loadSnsList() {
+    fun loadSnsList() = viewModelScope.launch {
+    
     }
     
     fun requestParticipate(activityInfo: ActivityInfo) = viewModelScope.launch {
