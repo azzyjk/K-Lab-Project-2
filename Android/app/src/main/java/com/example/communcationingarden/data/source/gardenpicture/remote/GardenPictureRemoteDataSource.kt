@@ -2,13 +2,13 @@ package com.example.communcationingarden.data.source.gardenpicture.remote
 
 import com.example.communcationingarden.data.GardenPicture
 import com.example.communcationingarden.data.source.gardenpicture.GardenPictureDataSource
-import com.example.communcationingarden.network.PictureRetrofitService
+import com.example.communcationingarden.network.GardenPictureRetrofitService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class GardenPictureRemoteDataSource @Inject constructor(
-    private val gardenPictureRetrofitService: PictureRetrofitService
+    private val gardenPictureRetrofitService: GardenPictureRetrofitService
 ): GardenPictureDataSource.Remote {
     
     override suspend fun getGardenPictureList(

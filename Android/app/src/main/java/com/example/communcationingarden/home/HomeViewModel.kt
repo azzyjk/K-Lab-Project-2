@@ -6,16 +6,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.communcationingarden.data.ActivityInfo
 import com.example.communcationingarden.data.GardenInfo
+import com.example.communcationingarden.data.GardenPicture
 import com.example.communcationingarden.data.RegistActivityInfo
-import com.example.communcationingarden.data.SnsInfo
 import com.example.communcationingarden.data.source.activity.ActivityRepository
+import com.example.communcationingarden.data.source.gardenpicture.GardenPictureRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val activityRepository: ActivityRepository
+    private val activityRepository: ActivityRepository,
+    private val gardenPictureRepository: GardenPictureRepository
 ): ViewModel() {
     
     private val _selectGardenLiveData = MutableLiveData<GardenInfo>()
@@ -27,7 +29,7 @@ class HomeViewModel @Inject constructor(
     private val _myActivityListLiveData = MutableLiveData<List<ActivityInfo>>()
     val myActivityListLiveData get() = _myActivityListLiveData
     
-    private val _gardenPictureListLiveData = MutableLiveData<List<SnsInfo>>()
+    private val _gardenPictureListLiveData = MutableLiveData<List<GardenPicture>>()
     val gardenPictureListLiveData get() = _gardenPictureListLiveData
     
     private var userId: String? = null
@@ -56,8 +58,14 @@ class HomeViewModel @Inject constructor(
             }
     }
     
-    fun loadSnsList() = viewModelScope.launch {
-    
+    fun loadGardenPictureList() = viewModelScope.launch {
+        selectGardenInfoLiveData.value?.let { gardenInfo ->
+            gardenPictureRepository.getGardenPictureList(gardenInfo.name)
+                .onSuccess { gardenPictureList ->
+                    _gardenPictureListLiveData.value = gardenPictureList
+                }
+        }
+        
     }
     
     fun requestParticipate(activityInfo: ActivityInfo) = viewModelScope.launch {
